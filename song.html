@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Audio on Mobile</title>
+    <style>
+        body {
+            background: url('https://dl.dropboxusercontent.com/scl/fi/7nmo7vpyjixe0665etrvx/Untitled-6.5-x-7.5-cm-1.png?rlkey=8ac9ugw3mjewn80hwh8mg8bnj&st=178zran9
+') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        audio {
+            display: none; /* Hide the audio element initially */
+        }
+
+        #playButton {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #playButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>For Youuu</h2>
+        <audio id="audioPlayer">
+            <source src="https://www.dropbox.com/scl/fi/muo4vnhrqm2ncc3os3rp4/rvseditz-Uyirendru-unnai-nanum-orunaalum-sollamaten-song-blackscreen-lyrics-tamil-whatsapp.mp3?rlkey=r2hhz8vjcicf1ujukp2l6jfpj&st=rh4esnq4&dl=1
+" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="playButton">Click to Play</button>
+    </div>
+
+    <script>
+        const startTime = 104; 
+        const audio = document.getElementById('audioPlayer');
+        const playButton = document.getElementById('playButton');
+
+        // Set the start time when the audio metadata is loaded
+        audio.onloadedmetadata = () => {
+            audio.currentTime = startTime;
+        };
+
+        // Function to play the audio, triggered by user interaction
+        const playAudio = () => {
+            audio.play().then(() => {
+                audio.style.display = 'block'; // Show the controls after playback starts
+                playButton.style.display = 'none'; // Hide the play button
+            }).catch(error => {
+                console.error('Audio playback failed:', error);
+            });
+        };
+
+        // Attach play function to button click event
+        playButton.addEventListener('click', playAudio);
+    </script>
+</body>
+</html>
